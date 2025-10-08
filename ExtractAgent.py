@@ -9,34 +9,20 @@ from dotenv import load_dotenv
 # -----------------------------
 load_dotenv()
 
-DB_CONNECTION = os.getenv("DB_CONNECTION", "mssql+pyodbc")
-DB_HOST = os.getenv("DB_HOST", "localhost\\SQLEXPRESS")
-DB_PORT = os.getenv("DB_PORT", "1433")
-DB_DATABASE = os.getenv("DB_DATABASE", "master")
-DB_USERNAME = os.getenv("DB_USERNAME", "")
-DB_PASSWORD = os.getenv("DB_PASSWORD", "")
-DB_DRIVER = os.getenv("DB_DRIVER", "ODBC Driver 17 for SQL Server")
+SQL_SERVER = os.getenv("SQL_SERVER")
+SQL_DATABASE = os.getenv("SQL_DATABASE")
+SQL_USERNAME = os.getenv("SQL_USERNAME")
+SQL_PASSWORD = os.getenv("SQL_PASSWORD")
+SQL_DRIVER = os.getenv("SQL_DRIVER", "ODBC Driver 17 for SQL Server")
 
-# -----------------------------
-# Create SQLAlchemy engine
-# -----------------------------
 def get_engine():
     """
-    Returns a SQLAlchemy engine using either Windows Auth or SQL Auth.
+    Create and return a SQLAlchemy engine for SQL Server using SQL authentication.
     """
-    if DB_USERNAME and DB_PASSWORD:
-        # SQL Server Authentication
-        connection_string = (
-            f"mssql+pyodbc://{quote_plus(DB_USERNAME)}:{quote_plus(DB_PASSWORD)}"
-            f"@{DB_HOST}:{DB_PORT}/{DB_DATABASE}?driver={quote_plus(DB_DRIVER)}"
-        )
-    else:
-        # Windows Authentication
-        connection_string = (
-            f"mssql+pyodbc://@{DB_HOST}:{DB_PORT}/{DB_DATABASE}"
-            f"?driver={quote_plus(DB_DRIVER)}&trusted_connection=yes"
-        )
-
+    connection_string = (
+        f"mssql+pyodbc://{quote_plus(SQL_USERNAME)}:{quote_plus(SQL_PASSWORD)}"
+        f"@{SQL_SERVER}/{SQL_DATABASE}?driver={quote_plus(SQL_DRIVER)}"
+    )
     engine = create_engine(connection_string, fast_executemany=True)
     return engine
 
