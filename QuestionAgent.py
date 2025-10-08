@@ -5,7 +5,7 @@ load_dotenv()
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 # Load your DB schema into a string
-with open("Back-up/db_schema.txt", "r", encoding="utf-8") as f:
+with open("db_schema.txt", "r", encoding="utf-8") as f:
     DB_SCHEMA = f.read()
 
 from langchain.chat_models import ChatOpenAI
