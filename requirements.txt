@@ -1,0 +1,49 @@
+# Core web app
+streamlit>=1.36.0
+
+# Data handling
+pandas>=2.2.2
+openpyxl>=3.1.2       # for Excel (.xlsx) support
+
+# Database connection
+pyodbc>=5.1.0
+
+# Visualization
+matplotlib>=3.9.0
+seaborn>=0.13.2
+
+# Optional: for performance & compatibility
+numpy>=1.26.4
+
+# Core framework
+streamlit>=1.36.0
+python-dotenv>=1.0.1
+
+# LangChain ecosystem
+langchain>=0.2.14
+langchain-core>=0.2.35
+langchain-community>=0.2.7
+langchain-openai>=0.1.14
+
+# Vector database
+chromadb>=0.5.3
+
+# Database drivers
+sqlalchemy>=2.0.32
+pyodbc>=5.1.0
+
+# OpenAI SDK (for embeddings/LLM backends)
+openai>=1.40.0
+tiktoken>=0.7.0
+
+# Optional (for stable encoding + utils)
+numpy>=1.26.4
+
+
+fastapi
+uvicorn
+pandas
+openai
+python-dotenv
+sqlalchemy   # if you use DB
+pyodbc
