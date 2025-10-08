@@ -27,7 +27,7 @@ langchain-openai>=0.1.14
 
 # Vector database
 chromadb>=0.5.3
-
+sqlalchemy-pytds
 # Database drivers
 sqlalchemy>=2.0.32
 pyodbc>=5.1.0
@@ -48,4 +48,5 @@ python-dotenv
 sqlalchemy   # if you use DB
 
 pyodbc
+
 
